@@ -37,9 +37,9 @@ helm install nginx-ingress ingress-nginx/ingress-nginx --set-string controller.s
 
 > Note: Important variable is to set Nginx Ingress Controller Service as NodePort not a ClusterIP Service.
 
-## Connect the ALB to the Nginx Ingress controller
+## Connect the ALB to the Nginx Ingress Controller
 
-To connect the ALB to the nginx ingress controller, we need to create a kubernetes ingress resource in the namespace kube-system with the following configuration:
+To connect the ALB to the Nginx Ingress Controller, we need to create a Kubernetes ingress resource in the namespace kube-system with the following configuration:
 
 Create a connection YAML file and apply. 
 
@@ -77,9 +77,9 @@ Validate the deployment by accessing the ingress address, it will be public faci
 kubectl get ingress -n kube-system
 ```
 
-Congralations, We have now deployed both ALB and Nginx Ingress Controller on EKS CLuster. And is ready to be use. We can test the using sample deployment!!!
+Congratulations, We have now deployed both ALB and Nginx Ingress Controller on EKS Cluster. And is ready to be use. We can test the using sample deployment!!!
 
-> Note: Deploy your application with following ingress annonation and service port should be 'ClusterIP'
+> Note: Deploy your application with following ingress annotation and service port should be 'ClusterIP'
 ```
 annotations:
    kubernetes.io/ingress.class: nginx
