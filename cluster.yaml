@@ -1,0 +1,23 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: vignesh-alb-nginx-cluster
+  region: us-east-1
+  
+# traits of worker nodes
+nodeGroups:
+  - name: nginx-ng
+    instanceType: t3.medium
+    desiredCapacity: 3
+    minSize: 1
+    maxSize: 4
+    ssh:
+      allow: true
+    iam:
+      # polices added to worker node role
+      withAddonPolicies:
+        # allows read/write to zones in Route53
+        externalDNS: true
+        # required for ALB-ingress
+        albIngress: true
